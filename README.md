@@ -18,9 +18,9 @@
 import logo from './imgs/logo.png'
 <img src={logo} alt=""/>
 ```
-```
+
 ******* 在一个项目里安装包,如果用 <span style='color:#f66'>**npm** </span>就别用**yarn**,  用**yarn** 就不用<span style='color:#f66'>**npm** </span> 因为俩不同的软件安装有可能就会出现问题  , 一般 React开发推介用 注意啦!!!! 
-```
+
 
 ### day02
 01  yarn add redux --save

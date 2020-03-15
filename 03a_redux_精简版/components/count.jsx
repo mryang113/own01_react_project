@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-
-
+import {
+  createIncrementAction,
+  createDecrementAction
+} from '../redux/count_action_creator'
 
 export default class Count extends Component {
 
@@ -10,25 +12,22 @@ export default class Count extends Component {
     let {value} = this.refs.numberNode
     //2.通知redux加1
     // 这里正常component组件给 ===>> redux传参用 dispatch这个方法
-    // this.props.store.dispatch(createIncrementAction(value*1)) 
-    this.props.increment(value*1)
+    this.props.store.dispatch(createIncrementAction(value*1)) 
   }
 
   //减法
   decrement = () => { 
     let {value} = this.refs.numberNode
-    // this.props.store.dispatch(createDecrementAction(value*1))
-    this.props.decrement(value*1)
+    this.props.store.dispatch(createDecrementAction(value*1))
   }
 
   //当前为奇数时再加
   incrementIfOdd = () => {
     let {value} = this.refs.numberNode
     // 这里想拿到状态值 用store.getState()
-    // let count = this.props.store.getState()
-    let {number} = this.props
-    if(number % 2 === 1){
-      this.props.increment(value*1)
+    let count = this.props.store.getState()
+    if(count % 2 === 1){
+      this.props.store.dispatch(createIncrementAction(value*1)) 
     } 
   }
 
@@ -36,17 +35,16 @@ export default class Count extends Component {
   incrementAsync = () => {
     let {value} = this.refs.numberNode
     setTimeout(() => {
-      this.props.increment(value*1) 
+      this.props.store.dispatch(createIncrementAction(value*1)) 
     }, 1000);
   }
 
   render() {
-    // const {store} = this.props
-    console.log(this);
+    const {store} = this.props
     return (
       <div>
-        {/* <h2>当前总数为: <span style={{color:'#f66'}}>{store.getState()}</span> </h2> */}
-        <h2>当前总数为: <span style={{color:'#f66'}}>{this.props.number}</span> </h2>
+        {/* <h2>当前总数为: <span className='color'>{count}</span> </h2> */}
+        <h2>当前总数为: <span style={{color:'#f66'}}>{store.getState()}</span> </h2>
         <select ref="numberNode">
           <option value="1">1</option>
           <option value="2">2</option>

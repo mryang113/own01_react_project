@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import CountContainer from './containers/count_container'
+import Count from './components/count'
 
 export default class App extends Component {
   render() {
-    // const {store} = this.props
+    const {store} = this.props
     return (
       <div>
-        <CountContainer/>
+        <Count store={store}/>
       </div>
     )
   }
