@@ -25,7 +25,7 @@ import logo from './imgs/logo.png'
 ### day02
 01  yarn add redux --save
 02  yarn add react-redux --save
-03  yarn add redux-thunk --save  //react-redux 的一个中间件
+03  yarn add redux-thunk --save  //react-redux 的一个中间件,用于操作异步用的
 
 		
 		
