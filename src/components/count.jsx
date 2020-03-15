@@ -1,4 +1,8 @@
 import React, { Component } from 'react'
+import {
+  createIncrementAction,
+  createDecrementAction
+} from '../redux/count_action_creator'
 
 export default class Count extends Component {
 
@@ -8,13 +12,13 @@ export default class Count extends Component {
     let {value} = this.refs.numberNode
     //2.通知redux加1
     // 这里正常component组件给 ===>> redux传参用 dispatch这个方法
-    this.props.store.dispatch({type:'increment',data:value*1}) 
+    this.props.store.dispatch(createIncrementAction(value*1)) 
   }
 
   //减法
   decrement = () => { 
     let {value} = this.refs.numberNode
-    this.props.store.dispatch({type:'decrement',data:value*1})
+    this.props.store.dispatch(createDecrementAction(value*1))
   }
 
   //当前为奇数时再加
@@ -23,7 +27,7 @@ export default class Count extends Component {
     // 这里想拿到状态值 用store.getState()
     let count = this.props.store.getState()
     if(count % 2 === 1){
-      this.props.store.dispatch({type:'increment',data:value*1}) 
+      this.props.store.dispatch(createIncrementAction(value*1)) 
     } 
   }
 
@@ -31,7 +35,7 @@ export default class Count extends Component {
   incrementAsync = () => {
     let {value} = this.refs.numberNode
     setTimeout(() => {
-      this.props.store.dispatch({type:'increment',data:value*1}) 
+      this.props.store.dispatch(createIncrementAction(value*1)) 
     }, 1000);
   }
 
