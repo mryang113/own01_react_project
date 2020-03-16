@@ -38,6 +38,9 @@ import logo from './imgs/logo.png'
 * 转回 商品管理项目
 01  在package.json 最后里面平级加上 "proxy": "http://localhost:4000" 就可以啦,react底层帮你在3000转发到4000 
 02 yarn add axios --save 
+* 发送axios请求借助于react脚手架第三方库来实现 json转换成urlencoded 形式的
+import qs from 'querystring'
+* axios版 用的antd里的message方法 要在上面引入
 
 
 		
