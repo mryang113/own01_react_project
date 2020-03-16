@@ -27,5 +27,10 @@ import logo from './imgs/logo.png'
 02  yarn add react-redux --save
 03  yarn add redux-thunk --save  //react-redux 的一个中间件,用于操作异步用的
 
+
+### day03
+* 安装 chrome 浏览器插件 , redux调试工具
+ 01  yarn add  --save-dev redux-devtools-extension
+
 		
 		
