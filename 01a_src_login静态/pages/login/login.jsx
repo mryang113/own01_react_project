@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Form, Input, Button } from 'antd';
-import axios from 'axios'
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import logo from './imgs/logo.png'
 import './css/login.less'
@@ -11,12 +10,6 @@ export default class Login extends Component {
   //表单提交的回调 
   onFinish = (values) => {
     console.log('表单提交成功了~~', values);
-    const {username,password} = values
-    // 这里 axios 发送请求默认自带的是 json 参数,服务器那边不解析{username,password}, 所以要转换成urlencoded 格式
-    axios.post('http://localhost:3000/login',`username=${username}&password=${password}`).then(
-      response => {console.log(response.data);},
-      error => {console.log(error);}
-    )
   }
   //密码的自定义验证
   pwdValidator = (rule,value) => {
