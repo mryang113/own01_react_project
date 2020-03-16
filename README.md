@@ -31,6 +31,14 @@ import logo from './imgs/logo.png'
 ### day03
 * 安装 chrome 浏览器插件 , redux调试工具
  01  yarn add  --save-dev redux-devtools-extension
+```js
+
+安装完后 再store 里面引入 import {composeWithDevTools} from 'redux-devtools-extension' 
+引入完,最后用上 export default createStore(reducer,composeWithDevTools(applyMiddleware(thunk)));
+然后查看开发者调试工具 那个插件就亮了,可以操作啦 ;
+
+```
+
 
 		
 		
