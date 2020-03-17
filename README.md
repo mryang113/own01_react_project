@@ -42,6 +42,9 @@ import logo from './imgs/logo.png'
 import qs from 'querystring'
 * axios版 用的antd里的message方法 要在上面引入
 
+### day03 
+* redux 搭建redux 基础环境;
+
 
 		
 		

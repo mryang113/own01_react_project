@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
 import { Form, Input, Button, message} from 'antd';
+import {connect} from 'react-redux'
 import {reqLogin} from '../../ajax'
 // 发送axios请求借助于react脚手架第三方库来实现 json转换成urlencoded 形式的
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import logo from './imgs/logo.png'
 import './css/login.less'
+import { createSaveUserAction } from '../../redux/actions/login';
 // 从Form上获取Item(antd)
 const {Item} = Form
 
 
-export default class Login extends Component {
+class Login extends Component {
   //表单提交的回调 
   onFinish = async(values) => {
     console.log('表单提交啦',values);
@@ -17,7 +19,8 @@ export default class Login extends Component {
     let result = await reqLogin(username,password) 
     const {status,data,msg} = result
     if(status===0){
-			message.success('登录成功！',1)
+      message.success('登录成功！',1)
+      this.props.save(data)
 			this.props.history.replace('/admin')
 		}else{
 			message.warning(msg,1)
@@ -88,3 +91,8 @@ export default class Login extends Component {
     )
   }
 }
+
+export default connect(
+  () => ({}),//传递状态给UI
+  {save:createSaveUserAction}//传递操作状态的方法给UI
+)(Login)
