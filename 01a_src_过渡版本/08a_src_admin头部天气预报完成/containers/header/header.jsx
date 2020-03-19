@@ -18,11 +18,9 @@ class Header extends Component {
   state = {
     isFull: false, //标识是否全屏 
     date:dayjs().format('YYYY年 MM月 DD日 HH:mm:ss'),
-    weatherInfo:{
-			dayPictureUrl:'',
-			temperature:'',
-			weather:''
-		}
+    dayPictureUrl:'',
+    temperature:'',
+    weather:''
   }
 
   fullScreen = () => {
@@ -63,6 +61,11 @@ class Header extends Component {
     //请求天气信息 
     this.getWeather()
   }
+
+  componentWillUnmount(){
+		clearInterval(this.timer)
+  }
+  
   render() {
     const {isFull,date,dayPictureUrl,weather,temperature} = this.state
     return (
